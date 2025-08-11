@@ -20,10 +20,26 @@ function agregarAmigo() {
     }
 
     //si cumple con las condiciones
-   else amigos.push (ingresarnombre);
-
-
+    amigos.push (ingresarnombre);
+    actualizarListaAmigos()
+  //restablecer el campo de texto a vacío
+    limpiarCaja();
 }
 
+//Funcion para que la caja se vacia al agregar el amigo
+function limpiarCaja (){ document.getElementById("amigo").value = ``;
+  }
 
+//funcion para mostrar la lista en pantalla
+function actualizarListaAmigos() {
+    let lista = document.getElementById("listaAmigos");
+    //limpiar la lista
+    lista.innerHTML = '';
 
+    // un elemento li por cada amigo
+for(let i = 0; i < amigos.length; i++) {
+    const li = document.createElement('li');
+    li.textContent = amigos[i];
+    lista.appendChild(li);
+}
+}
